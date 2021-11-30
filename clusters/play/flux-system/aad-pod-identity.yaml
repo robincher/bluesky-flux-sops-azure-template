@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: aad-pod-identity
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: aad-pod-identity
+  namespace: aad-pod-identity
+spec:
+  url: https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
+  interval: 10m
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: aad-pod-identity
+  namespace: aad-pod-identity
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: aad-pod-identity
+      version: 4.1.5
+      sourceRef:
+        kind: HelmRepository
+        name: aad-pod-identity
+        namespace: aad-pod-identity
+      interval: 1m
+
