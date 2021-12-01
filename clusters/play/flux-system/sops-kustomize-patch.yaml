@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kustomize-controller
+  namespace: flux-system
+spec:
+  template:
+    metadata:
+      labels:
+        aadpodidbinding: bluesky-decryptor # match the AzureIdentityBinding selector
+    spec:
+      containers:
+      - name: manager
+        env:
+        - name: AZURE_AUTH_METHOD
+          value: msi
+      # tolerations:
+      # - key: "key1"
+      #   operator: "Equal"
+      #   value: "value1"
+      #   effect: "NoSchedule"

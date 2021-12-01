@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: bluesky-private-registry
+  namespace: default
+spec:
+  interval: 30m0s
+  url: https://private-registry.bluesky.io/chartrepo/demo-app
+  secretRef:
+    name: demoapp-credentials

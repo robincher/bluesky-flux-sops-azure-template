@@ -1,0 +1,5 @@
+resources:
+- ./flux-system
+- ./application.yaml
+- ./secrets.yaml
+- ./sops.yaml

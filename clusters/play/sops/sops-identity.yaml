@@ -1,0 +1,18 @@
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentity
+metadata:
+  name: bluesky-decryptor
+  namespace: flux-system
+spec:
+  clientID: # Managed Identity Client ID example: 1234567-8315-456c-957a-c81118b24b5v 
+  resourceID: # Full Resource ID Path  example:  /subscriptions/12234321211/resourceGroups/bluesky/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bluesky-identity
+  type: 0 # user-managed identity
+---
+apiVersion: aadpodidentity.k8s.io/v1
+kind: AzureIdentityBinding
+metadata:
+  name: bluesky-decryptor-binding
+  namespace: flux-system
+spec:
+  azureIdentity: bluesky-decryptor
+  selector: bluesky-decryptor

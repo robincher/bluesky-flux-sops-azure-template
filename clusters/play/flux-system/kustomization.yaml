@@ -4,5 +4,5 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - aad-pod-identity.yaml
-# patchesStrategicMerge:
-# - flux-patch.yaml
+patchesStrategicMerge:
+- sops-kustomize-patch.yaml
