@@ -151,3 +151,11 @@ spec:
   secretRef:
     name: demoapp-credentials
 ```
+
+## Testing
+
+Testing the manifest and helm files
+
+```
+./scripts/validate.sh
+```
